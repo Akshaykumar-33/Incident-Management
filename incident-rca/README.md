@@ -34,20 +34,32 @@ npx @grok/agent-sdk serve --dir . --mode single --dev
 # Playground: http://127.0.0.1:3000/playground
 ```
 
-## Slack setup (human gate)
+## Slack setup (manual — no Cursor team required)
 
-Slack app creation needs your Cursor login and Slack workspace approval. The
-channel file is already scaffolded at `bot/channels/slack.ts`.
+`slack create` needs a Cursor team. If `cursor.com/dashboard` redirects to
+`grok.com`, skip that wizard and use api.slack.com instead.
 
-1. `npx @grok/agent-sdk login`
-2. `npx @grok/agent-sdk slack create --dir . --name "Incident RCA" --channel-posts --prefix INCIDENT_RCA`
-3. Invite the bot to `#incidents` (or a sandbox channel)
-4. Replace `C0000000000` in `bot/channels/slack.ts` with the real channel id
-5. `npx @grok/agent-sdk slack doctor --prefix INCIDENT_RCA`
-6. `npx @grok/agent-sdk serve --dir . --dev` and post a test incident message
+1. Open https://api.slack.com/apps → **Create New App** → **From a manifest**
+2. Paste [`.slack/manifest.dev.json`](.slack/manifest.dev.json) → Create
+3. **OAuth & Permissions** → Install to Workspace → copy **Bot User OAuth Token** (`xoxb-…`)
+4. **Basic Information** → App-Level Tokens → Create Token with scope `connections:write` (`xapp-…`)
+5. Create `incident-rca/.env.local` (see [`env.example`](env.example)):
 
-Tokens land in `.env.local` as `INCIDENT_RCA_SLACK_BOT_TOKEN` and
-`INCIDENT_RCA_SLACK_APP_TOKEN`. Never commit them.
+```bash
+INCIDENT_RCA_SLACK_BOT_TOKEN=xoxb-...
+INCIDENT_RCA_SLACK_APP_TOKEN=xapp-...
+```
+
+6. Invite the bot to your incidents channel
+7. Send the channel ID (`C…`) so we can replace `C0000000000` in `bot/channels/slack.ts`
+8. Check + run:
+
+```bash
+npx @grok/agent-sdk slack doctor --prefix INCIDENT_RCA
+npx @grok/agent-sdk serve --dir . --mode single --dev --host 0.0.0.0 --port 3456
+```
+
+Never commit `.env.local` or paste tokens into chat.
 
 ## Deploy
 

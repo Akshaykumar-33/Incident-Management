@@ -4,21 +4,20 @@ import {
 } from "@grok/agent-sdk/channels/slack";
 
 /**
- * Slack Socket Mode channel for the incident orchestrator.
+ * Slack channel (Socket Mode).
  *
- * Human setup (once):
- * 1. `npx @grok/agent-sdk login`
- * 2. `npx @grok/agent-sdk slack create --dir . --name "Incident RCA" --channel-posts --prefix INCIDENT_RCA`
- * 3. Invite the bot to your incidents channel
- * 4. Replace the placeholder channel id below with the real `C…` id
- *    (Slack → channel details → copy channel ID), then re-serve/deploy
+ * Tokens (in `.env.local`):
+ *   INCIDENT_RCA_SLACK_BOT_TOKEN
+ *   INCIDENT_RCA_SLACK_APP_TOKEN
+ *
+ * Setup: create the app from `.slack/manifest.dev.json` on api.slack.com
+ * (see README). Then replace the placeholder channel id below.
  */
 export default slackChannel({
   envPrefix: "INCIDENT_RCA",
   engagement: {
     channelPosts: {
-      // Placeholder until slack create + channel invite. Mentions still work
-      // in any channel the bot has joined.
+      // Replace C0000000000 with your real channel id (starts with C).
       allow: ["C0000000000", "#incidents"],
       posts: "top-level",
     },
