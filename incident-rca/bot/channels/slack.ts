@@ -17,8 +17,7 @@ export default slackChannel({
   envPrefix: "INCIDENT_RCA",
   engagement: {
     channelPosts: {
-      // Replace C0000000000 with your real channel id (starts with C).
-      allow: ["C0000000000", "#incidents"],
+      allow: ["C0CGUUP3L91", "#incident"],
       posts: "top-level",
     },
   },
