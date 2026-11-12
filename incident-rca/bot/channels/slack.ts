@@ -18,7 +18,9 @@ export default slackChannel({
   engagement: {
     channelPosts: {
       allow: ["C0CGUUP3L91", "#incident"],
-      posts: "top-level",
+      // Top-level starts incidents; thread replies continue evidence/RCA.
+      posts: "all",
+      replies: "allowlisted",
     },
   },
   onChannelPost: async (ctx, message) => {
