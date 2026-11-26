@@ -1,13 +1,21 @@
 # Incident-Management
 
-Agent SDK (“Grokbot”) agents for Slack incident and bug workflows.
+## Run this (one bot, one UI)
 
-| Agent | Path | Role |
-| --- | --- | --- |
-| Bug fix | [`bug-fix/`](bug-fix/) | Watch Slack bugs, investigate `BUG_FIX_REPO`, draft fix PR |
+```bash
+cd incident-flow
+npm install
+export BUG_FIX_USE_FIXTURE=1
+npx @grok/agent-sdk login
+npx @grok/agent-sdk serve --dir . --mode single --dev
+# http://127.0.0.1:3000/playground
+```
 
-`incident-rca/` (Slack triage → RCA) lives on a separate branch/PR and stays
-a sibling agent — RCA and code-fix are not merged into one bot.
+Flow: report → RCA → you type **`fix it`** → draft PR (link not pasted in Slack).
 
-See [`bug-fix/README.md`](bug-fix/README.md) for local serve, Slack tokens,
-`BUG_FIX_REPO=owner/name`, and deploy notes.
+| Folder | Role |
+| --- | --- |
+| [`incident-flow/`](incident-flow/) | **Use this** — unified RCA + human-gated fix |
+| [`bug-fix/`](bug-fix/) | Older standalone fix agent (superseded) |
+
+Details: [`incident-flow/README.md`](incident-flow/README.md).
