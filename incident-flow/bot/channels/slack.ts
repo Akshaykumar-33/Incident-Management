@@ -8,13 +8,13 @@ import {
  *   INCIDENT_FLOW_SLACK_BOT_TOKEN
  *   INCIDENT_FLOW_SLACK_APP_TOKEN
  *
- * Replace C0000000000 with your #incident channel id.
+ * Watches #incident (C0CGUUP3L91).
  */
 export default slackChannel({
   envPrefix: "INCIDENT_FLOW",
   engagement: {
     channelPosts: {
-      allow: ["C0000000000", "#incident"],
+      allow: ["C0CGUUP3L91", "#incident"],
       posts: "all",
       replies: "allowlisted",
     },
