@@ -1,0 +1,17 @@
+{
+  "description": "Synthetic evidence pack for local Incident RCA demos. Not production data.",
+  "files": [
+    {
+      "name": "deploy-timeline.json",
+      "purpose": "Recent deploys around the incident window"
+    },
+    {
+      "name": "error-logs.txt",
+      "purpose": "Sample error log lines"
+    },
+    {
+      "name": "recent-changes.md",
+      "purpose": "Notable config and code changes"
+    }
+  ]
+}

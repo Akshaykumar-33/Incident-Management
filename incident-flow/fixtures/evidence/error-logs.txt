@@ -1,0 +1,5 @@
+2026-11-11T08:47:12Z checkout-api ERROR tax_config: missing rate for region=IN-MH request_id=req_9f3a
+2026-11-11T08:47:13Z checkout-api ERROR POST /v1/checkout 500 tax_config_lookup_failed request_id=req_9f3a
+2026-11-11T08:48:01Z checkout-api WARN  error_rate=12.4% endpoint=/v1/checkout
+2026-11-11T08:51:44Z checkout-api ERROR tax_config: missing rate for region=IN-KA request_id=req_a1c2
+2026-11-11T08:52:10Z edge WARN  upstream_5xx cluster=checkout-api count=184

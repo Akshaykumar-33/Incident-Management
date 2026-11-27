@@ -1,0 +1,18 @@
+{
+  "service": "checkout-api",
+  "window": "2026-11-11T08:00:00Z/2026-11-11T10:00:00Z",
+  "deploys": [
+    {
+      "at": "2026-11-11T08:42:00Z",
+      "version": "checkout-api@1.84.0",
+      "change": "Enable new tax-config feature flag for 100% traffic",
+      "author": "release-bot"
+    },
+    {
+      "at": "2026-11-11T07:15:00Z",
+      "version": "checkout-api@1.83.2",
+      "change": "Routine dependency bump",
+      "author": "release-bot"
+    }
+  ]
+}
